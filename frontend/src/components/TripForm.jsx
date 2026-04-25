@@ -17,7 +17,6 @@ export default function TripForm({ onSubmit, loading }) {
   const [pickup, setPickup] = useState("Dallas, TX");
   const [dropoff, setDropoff] = useState("Los Angeles, CA");
   const [cycleUsed, setCycleUsed] = useState("12");
-  
 
   // function handleSubmit(e) {
   //   e.preventDefault();
@@ -35,12 +34,6 @@ export default function TripForm({ onSubmit, loading }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-      onSubmit({
-        current: current.trim(),
-        pickup: pickup.trim(),
-        dropoff: dropoff.trim(),
-        cycleUsedHours: parseFloat(cycleUsed) || 0,
-      });
 
     const cycle = parseFloat(cycleUsed);
     if (isNaN(cycle) || cycle < 0 || cycle > 70) return;
@@ -53,7 +46,13 @@ export default function TripForm({ onSubmit, loading }) {
       cycleUsedHours: cycle,
     };
     console.log("Submitting trip data:", tripData);
-    
+    // Send the result back up to the parent component (App.jsx)
+    onSubmit({
+      current: current.trim(),
+      pickup: pickup.trim(),
+      dropoff: dropoff.trim(),
+      cycleUsedHours: parseFloat(cycleUsed) || 0,
+    });
 
     try {
       // 2. Make the POST request to your Django server
@@ -73,9 +72,6 @@ export default function TripForm({ onSubmit, loading }) {
       const result = await response.json();
       console.log("Received response:", result);
       // onSubmit(result);
-
-      // 4. Send the result back up to the parent component (App.jsx)
-    
     } catch (error) {
       console.error("Error planning trip:", error);
       alert(
