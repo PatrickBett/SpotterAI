@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ELD Trip Planner — Modern Logistics Dashboard
+   All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Surfaces */
+    --background: 210 20% 97%;
+    --foreground: 222 32% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 32% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 32% 12%;
+
+    /* Brand — fleet blue */
+    --primary: 214 88% 27%;
+    --primary-foreground: 210 40% 98%;
+    --primary-glow: 214 95% 55%;
+
+    /* Accent — signal green */
+    --accent: 152 70% 38%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Warning — amber */
+    --warning: 38 95% 50%;
+    --warning-foreground: 222 32% 12%;
+
+    --secondary: 214 30% 94%;
+    --secondary-foreground: 222 32% 18%;
+
+    --muted: 214 25% 93%;
+    --muted-foreground: 215 16% 42%;
+
+    --destructive: 0 78% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 25% 88%;
+    --input: 215 25% 88%;
+    --ring: 214 88% 27%;
+
+    --radius: 0.625rem;
+
+    /* Sidebar — deep navy */
+    --sidebar-background: 222 38% 11%;
+    --sidebar-foreground: 215 28% 78%;
+    --sidebar-primary: 214 95% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 32% 18%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 222 30% 18%;
+    --sidebar-ring: 214 95% 55%;
+
+    /* Duty status palette (ELD log) */
+    --duty-off: 215 16% 60%;
+    --duty-sb: 270 60% 55%;
+    --duty-driving: 152 70% 38%;
+    --duty-on: 38 95% 50%;
+
+    /* Gradients & shadows */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-glow)) 100%);
+    --gradient-surface: linear-gradient(180deg, hsl(210 20% 99%) 0%, hsl(210 20% 96%) 100%);
+    --shadow-elevated: 0 10px 30px -12px hsl(222 32% 12% / 0.18);
+    --shadow-card: 0 1px 2px hsl(222 32% 12% / 0.04), 0 4px 12px -4px hsl(222 32% 12% / 0.08);
+    --transition-base: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 222 38% 8%;
+    --foreground: 210 40% 96%;
+    --card: 222 32% 12%;
+    --card-foreground: 210 40% 96%;
+    --popover: 222 32% 12%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 214 95% 60%;
+    --primary-foreground: 222 38% 8%;
+    --secondary: 222 28% 18%;
+    --secondary-foreground: 210 40% 96%;
+    --muted: 222 28% 16%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 152 70% 42%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 222 28% 20%;
+    --input: 222 28% 20%;
+    --ring: 214 95% 60%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html, body, #root { height: 100%; }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Inter', system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+  .font-mono-num {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum';
+  }
+}
+
+@layer components {
+  .surface-card {
+    @apply bg-card rounded-xl border border-border;
+    box-shadow: var(--shadow-card);
+  }
+  .stat-pill {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium;
+  }
+}
+
+/* Leaflet overrides */
+.leaflet-container {
+  font-family: inherit;
+  background: hsl(var(--muted));
+}
+.leaflet-control-attribution {
+  font-size: 10px !important;
+  background: hsl(var(--card) / 0.85) !important;
+}
