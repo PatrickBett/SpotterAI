@@ -159,7 +159,7 @@ function Hero() {
           Plan compliant trips.
           <br />
           <span className="bg-gradient-primary bg-clip-text text-transparent">
-            Generate ELD logs instantly.
+            Generate ELD logs instantly..
           </span>
         </h1>
         <p className="mt-4 text-base md:text-lg text-muted-foreground max-w-2xl">
