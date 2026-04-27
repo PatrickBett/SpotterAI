@@ -57,7 +57,7 @@ export default function TripForm({ onSubmit, loading }) {
     try {
       // 2. Make the POST request to your Django server
       const response = await fetch(
-        "https://spotterai.pythonanywhere.com/admin/api/plan-trip/",
+        "https://spotterai.pythonanywhere.com/api/plan-trip/",
         {
           method: "POST",
           headers: {
