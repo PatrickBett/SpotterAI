@@ -56,13 +56,16 @@ export default function TripForm({ onSubmit, loading }) {
 
     try {
       // 2. Make the POST request to your Django server
-      const response = await fetch("http://localhost:8000/api/plan-trip/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        "https://spotterai.pythonanywhere.com/admin/api/plan-trip/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(tripData),
         },
-        body: JSON.stringify(tripData),
-      });
+      );
 
       if (!response.ok) {
         throw new Error("Network response was not ok");

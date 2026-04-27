@@ -299,10 +299,7 @@ function SiteFooter() {
   return (
     <footer className="border-t border-border">
       <div className="container py-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
-        <div>
-          © {new Date().getFullYear()} RouteLog · For demonstration. Not a
-          substitute for a certified ELD.
-        </div>
+        <div>© {new Date().getFullYear()} patrickbett.</div>
         <div>Map data © OpenStreetMap contributors · Routing by OSRM</div>
       </div>
     </footer>
